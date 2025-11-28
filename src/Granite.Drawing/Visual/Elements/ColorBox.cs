@@ -1,0 +1,26 @@
+using Granite.Drawing.Abstractions;
+using Granite.Drawing.Geometry.Primitives;
+using Granite.Drawing.Visual.Primitives;
+
+namespace Granite.Drawing.Visual.Elements;
+
+public class ColorBox : IDrawable
+{
+    public Color Color { get; init; }
+    public Rect Bounds { get; init; }
+    
+    public void Draw(IOutput output)
+    {
+        for (int y = Bounds.P1.Y; y < Bounds.P2.Y; y++)
+        {
+            output.SetCursorPosition(new Point(Bounds.P1.X, y));
+            output.SetForegroundColor(Color);
+            output.SetBackgroundColor(Color);
+
+            for (int x = Bounds.P1.X; x < Bounds.P2.X; x++)
+            {
+                output.Write(' ');
+            }
+        }
+    }
+}
