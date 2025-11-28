@@ -1,1 +1,0 @@
-# Granite -  C# Console UI library.
