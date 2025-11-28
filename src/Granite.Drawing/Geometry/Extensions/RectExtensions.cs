@@ -14,19 +14,10 @@ public static class RectExtensions
 
     public static Rect GetIntersection(this Rect rect, Rect rect2)
     {
-        return new Rect
-        {
-            P1 = new Point
-            {
-                X = System.Math.Max(rect.P1.X, rect2.P1.X),
-                Y = System.Math.Max(rect.P1.Y, rect2.P1.Y)
-            },
-            P2 = new Point
-            {
-                X = System.Math.Min(rect.P2.X, rect2.P2.X),
-                Y = System.Math.Min(rect.P2.Y, rect2.P2.Y)
-            }
-        };
+        var p1 = new Point(Math.Max(rect.P1.X, rect2.P1.X), Math.Max(rect.P1.Y, rect2.P1.Y));
+        var p2 = new Point(Math.Min(rect.P2.X, rect2.P2.X), Math.Min(rect.P2.Y, rect2.P2.Y));
+
+        return new Rect(p1, p2);
     }
 
     public static IEnumerable<Rect> ExcludePart(this Rect rect, Rect part)
