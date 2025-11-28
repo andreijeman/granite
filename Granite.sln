@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Granite.Drawing", "src\Granite.Drawing\Granite.Drawing.csproj", "{E809624B-4828-47D1-B9D3-3EA58D571A1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Granite.Demo", "Granite.Demo\Granite.Demo.csproj", "{3653BD5C-D48D-4C0E-A140-E8D5B12623CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{E809624B-4828-47D1-B9D3-3EA58D571A1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E809624B-4828-47D1-B9D3-3EA58D571A1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E809624B-4828-47D1-B9D3-3EA58D571A1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3653BD5C-D48D-4C0E-A140-E8D5B12623CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3653BD5C-D48D-4C0E-A140-E8D5B12623CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3653BD5C-D48D-4C0E-A140-E8D5B12623CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3653BD5C-D48D-4C0E-A140-E8D5B12623CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
