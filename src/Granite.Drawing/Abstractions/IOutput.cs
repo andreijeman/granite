@@ -7,9 +7,13 @@ namespace Granite.Drawing.Abstractions;
 public interface IOutput
 {
     void Write(char character);
-    void Write(string text);
     
     void SetCursorPosition(Point position);
     void SetForegroundColor(Color color);
     void SetBackgroundColor(Color color);
+    
+    void MoveOrigin(Point offset);
+    
+    void Show();
+    void Reset();
 }

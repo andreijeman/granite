@@ -9,7 +9,9 @@ namespace Granite.Drawing.Outputs;
 public class AnsiOutput : IOutput, IDrawableHandler
 {
     private readonly object _locker = new();
+    
     private readonly StringBuilder _buffer = new();
+    private Point _origin;
     
     public void Write(char character)
     {
@@ -23,7 +25,7 @@ public class AnsiOutput : IOutput, IDrawableHandler
 
     public void SetCursorPosition(Point position)
     {
-        _buffer.Append($"\x1b[{position.Y + 1};{position.X + 1}H");
+        _buffer.Append($"\x1b[{_origin.Y + position.Y + 1};{_origin.X + position.X + 1}H");
     }
 
     public void SetForegroundColor(Color color)
@@ -36,14 +38,41 @@ public class AnsiOutput : IOutput, IDrawableHandler
         _buffer.Append($"\x1b[48;2;{color.R};{color.G};{color.B}m");
     }
 
-    public void Draw(IDrawable drawable)
+    public void MoveOrigin(Point offset)
+    {
+        _origin += offset;
+    }
+
+    public void Show()
+    {
+        Console.Write(_buffer.ToString());
+    }
+
+    public void Reset()
+    {
+        _buffer.Clear();
+        _origin = Point.Zero;
+    }
+
+    public void Draw(object sender, IDrawable drawable, Point origin)
     {
         lock (_locker)
         {
+            _origin = origin;
             drawable.Draw(this);
-            Console.Write(_buffer.ToString());
-            _buffer.Clear();
+            Reset();
         }
     }
+
+    public void Draw(object sender, IDrawable drawable, Point origin, Rect bounds)
+    {
+        lock (_locker)
+        {
+            _origin = origin;
+            drawable.Draw(this, bounds);
+            Reset();
+        }
+    }
+    
 }
 
