@@ -44,14 +44,7 @@ public class AnsiOutput : IOutput, IDrawableHandler
 
     public void Show()
     {
-        var s =_buffer.ToString();
         Console.Write(_buffer.ToString());
-    }
-
-    public void Reset()
-    {
-        _buffer.Clear();
-        _origin = Point.One;
     }
 
     public void Draw(object sender, IDrawable drawable, Point origin)
@@ -66,6 +59,12 @@ public class AnsiOutput : IOutput, IDrawableHandler
         _origin += origin;
         drawable.Draw(this, bounds);
         Reset();
+    }
+
+    private void Reset()
+    {
+        _buffer.Clear();
+        _origin = Point.One;
     }
 }
 

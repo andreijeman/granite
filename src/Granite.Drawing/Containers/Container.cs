@@ -4,7 +4,7 @@ using Granite.Drawing.Geometry.Primitives;
 
 namespace Granite.Drawing.Containers;
 
-public class ImmutableContainer : IContainer
+public class Container : IContainer
 {
     private readonly IDrawableHandler _parent;
     private readonly List<IDrawable> _children;
@@ -13,7 +13,7 @@ public class ImmutableContainer : IContainer
 
     public Rect Bounds { get; }
     
-    public ImmutableContainer(IDrawableHandler parent, List<IDrawable> children, Rect bounds)
+    public Container(IDrawableHandler parent, List<IDrawable> children, Rect bounds)
     {
         _parent = parent;   
         _children = children;
@@ -61,5 +61,4 @@ public class ImmutableContainer : IContainer
             drawable.Draw(output, drawable.Bounds.GetIntersection(bounds));
         }
     }
-    
 }

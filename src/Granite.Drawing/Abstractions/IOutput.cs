@@ -14,5 +14,4 @@ public interface IOutput
     void MoveOrigin(Point offset);
     
     void Show();
-    void Reset();
 }

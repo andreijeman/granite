@@ -27,7 +27,7 @@ var box3= new ColorBox
 var output = new AnsiOutput();
 
 var bounds = new Rect(0, 0, 22, 10);
-var container = new ImmutableContainer(output, [box3, box, box2], bounds);
+var container = new Container(output, [box3, box, box2], bounds);
 
 Console.Clear();
 container.Draw(output);
