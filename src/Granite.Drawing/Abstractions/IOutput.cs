@@ -1,5 +1,4 @@
 using Granite.Drawing.Geometry.Primitives;
-using Granite.Drawing.Visual;
 using Granite.Drawing.Visual.Primitives;
 
 namespace Granite.Drawing.Abstractions;

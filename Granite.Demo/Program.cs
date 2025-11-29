@@ -1,5 +1,4 @@
-﻿using Granite.Drawing.Abstractions;
-using Granite.Drawing.Containers;
+﻿using Granite.Drawing.Containers;
 using Granite.Drawing.Geometry.Primitives;
 using Granite.Drawing.Outputs;
 using Granite.Drawing.Visual.Elements;
