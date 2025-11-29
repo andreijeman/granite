@@ -1,14 +1,19 @@
-﻿using Granite.Drawing.Geometry.Primitives;
+﻿using Granite.Drawing.Abstractions;
+using Granite.Drawing.Containers;
+using Granite.Drawing.Geometry.Primitives;
 using Granite.Drawing.Outputs;
 using Granite.Drawing.Visual.Elements;
 using Granite.Drawing.Visual.Primitives;
 
 var box = new ColorBox
 (
-    color: new Color("242344"),
-    bounds: new Rect(8, 8, 8, 8)
+    color: new Color("#f542ef"),
+    bounds: new Rect(-3, 0, 4, 2)
 );
 
 var output = new AnsiOutput();
 
-output.Draw(box);
+var bounds = new Rect(22, 3, 8, 8);
+var container = new ImmutableContainer(output, [box], bounds);
+
+container.Draw(output);
