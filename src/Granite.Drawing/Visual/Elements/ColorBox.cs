@@ -6,8 +6,14 @@ namespace Granite.Drawing.Visual.Elements;
 
 public class ColorBox : IDrawable
 {
-    public Color Color { get; init; }
-    public Rect Bounds { get; init; }
+    public Color Color { get; }
+    public Rect Bounds { get; }
+
+    public ColorBox(Color color, Rect bounds)
+    {
+        Color = color;
+        Bounds = bounds;
+    }
     
     public void Draw(IOutput output)
     {
