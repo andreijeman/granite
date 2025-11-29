@@ -29,4 +29,19 @@ public class ColorBox : IDrawable
             }
         }
     }
+
+    public void Draw(Rect section, IOutput output)
+    {
+        for (int y = section.P1.Y; y < section.P2.Y; y++)
+        {
+            output.SetCursorPosition(new Point(section.P1.X, y));
+            output.SetForegroundColor(Color);
+            output.SetBackgroundColor(Color);
+
+            for (int x = section.P1.X; x < section.P2.X; x++)
+            {
+                output.Write(' ');
+            }
+        }
+    }
 }
