@@ -11,7 +11,7 @@ public class AnsiOutput : IOutput, IDrawableHandler
     private readonly object _locker = new();
     
     private readonly StringBuilder _buffer = new();
-    private Point _origin;
+    private Point _origin = Point.One;
     
     public void Write(char character)
     {
@@ -23,9 +23,9 @@ public class AnsiOutput : IOutput, IDrawableHandler
         _buffer.Append(text);
     }
 
-    public void SetCursorPosition(Point position)
+    public void SetCursorPosition(int x, int y)
     {
-        _buffer.Append($"\x1b[{_origin.Y + position.Y + 1};{_origin.X + position.X + 1}H");
+        _buffer.Append($"\x1b[{_origin.Y + y};{_origin.X + x}H");
     }
 
     public void SetForegroundColor(Color color)
@@ -45,34 +45,28 @@ public class AnsiOutput : IOutput, IDrawableHandler
 
     public void Show()
     {
+        var s =_buffer.ToString();
         Console.Write(_buffer.ToString());
     }
 
     public void Reset()
     {
         _buffer.Clear();
-        _origin = Point.Zero;
+        _origin = Point.One;
     }
 
     public void Draw(object sender, IDrawable drawable, Point origin)
     {
-        lock (_locker)
-        {
-            _origin = origin;
-            drawable.Draw(this);
-            Reset();
-        }
+        _origin += origin;
+        drawable.Draw(this);
+        Reset();
     }
 
     public void Draw(object sender, IDrawable drawable, Point origin, Rect bounds)
     {
-        lock (_locker)
-        {
-            _origin = origin;
-            drawable.Draw(this, bounds);
-            Reset();
-        }
+        _origin += origin;
+        drawable.Draw(this, bounds);
+        Reset();
     }
-    
 }
 
