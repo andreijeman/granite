@@ -24,9 +24,9 @@ public class Container : IContainer
     
     public void Draw(object sender, IDrawable drawable, Point origin)
     {
-        foreach (var bound2 in _childrenBounds[sender])
+        foreach (var bounds in _childrenBounds[sender])
         {
-            _parent.Draw(this, drawable, Bounds.P1 + origin);
+            _parent.Draw(this, drawable, Bounds.P1 + origin, bounds);
         }
     }
 
