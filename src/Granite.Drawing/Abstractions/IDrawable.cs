@@ -7,5 +7,5 @@ public interface IDrawable
     Rect Bounds { get; }
  
     void Draw(IOutput output);
-    void Draw(Rect section, IOutput output);
+    void Draw(IOutput output, Rect bounds);
 }

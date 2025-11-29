@@ -28,20 +28,24 @@ public class ColorBox : IDrawable
                 output.Write(' ');
             }
         }
+        
+        output.Show();
     }
 
-    public void Draw(Rect section, IOutput output)
+    public void Draw(IOutput output, Rect bounds)
     {
-        for (int y = section.P1.Y; y < section.P2.Y; y++)
+        for (int y = bounds.P1.Y; y < bounds.P2.Y; y++)
         {
-            output.SetCursorPosition(new Point(section.P1.X, y));
+            output.SetCursorPosition(new Point(bounds.P1.X, y));
             output.SetForegroundColor(Color);
             output.SetBackgroundColor(Color);
 
-            for (int x = section.P1.X; x < section.P2.X; x++)
+            for (int x = bounds.P1.X; x < bounds.P2.X; x++)
             {
                 output.Write(' ');
             }
         }
+
+        output.Show();
     }
 }
