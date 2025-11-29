@@ -12,15 +12,15 @@ public static class ChildrenExtensions
         
         for (int i = drawables.Count - 1; i > -1; i--)
         {
-            var boundsList = new List<Rect>();
+            var boundsList = new List<Rect> { drawables[i].Bounds.GetIntersection(bounds) };
 
-            for (int j = i; j > -1; j--)
+            for (int j = i - 1; j > -1; j--)
             {
                 var tempList = new List<Rect>();
                 
                 foreach (var childBounds in boundsList)
                 {
-                    tempList.Add(childBounds.GetIntersection(drawables[j].Bounds));
+                    tempList.AddRange(childBounds.GetDifference(drawables[j].Bounds));
                 }
                 
                 boundsList = tempList;

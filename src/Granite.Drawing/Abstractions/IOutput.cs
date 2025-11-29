@@ -8,7 +8,7 @@ public interface IOutput
 {
     void Write(char character);
     
-    void SetCursorPosition(Point position);
+    void SetCursorPosition(int x, int y);
     void SetForegroundColor(Color color);
     void SetBackgroundColor(Color color);
     

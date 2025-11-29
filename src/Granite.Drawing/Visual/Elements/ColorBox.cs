@@ -17,13 +17,14 @@ public class ColorBox : IDrawable
     
     public void Draw(IOutput output)
     {
-        for (int y = Bounds.P1.Y; y < Bounds.P2.Y; y++)
+        output.SetForegroundColor(Color);
+        output.SetBackgroundColor(Color);
+        
+        for (int y = Bounds.P1.Y; y <= Bounds.P2.Y; y++)
         {
-            output.SetCursorPosition(new Point(Bounds.P1.X, y));
-            output.SetForegroundColor(Color);
-            output.SetBackgroundColor(Color);
+            output.SetCursorPosition(Bounds.P1.X, y);
 
-            for (int x = Bounds.P1.X; x < Bounds.P2.X; x++)
+            for (int x = Bounds.P1.X; x <= Bounds.P2.X; x++)
             {
                 output.Write(' ');
             }
@@ -34,13 +35,14 @@ public class ColorBox : IDrawable
 
     public void Draw(IOutput output, Rect bounds)
     {
-        for (int y = bounds.P1.Y; y < bounds.P2.Y; y++)
+        output.SetForegroundColor(Color);
+        output.SetBackgroundColor(Color);
+        
+        for (int y = bounds.P1.Y; y <= bounds.P2.Y; y++)
         {
-            output.SetCursorPosition(new Point(bounds.P1.X, y));
-            output.SetForegroundColor(Color);
-            output.SetBackgroundColor(Color);
+            output.SetCursorPosition(bounds.P1.X, y);
 
-            for (int x = bounds.P1.X; x < bounds.P2.X; x++)
+            for (int x = bounds.P1.X; x <= bounds.P2.X; x++)
             {
                 output.Write(' ');
             }

@@ -11,9 +11,9 @@ public struct Rect
         P2 = p2;
     }
     
-    public Rect(int  x, int y, int width, int height)
+    public Rect(int  x1, int y1, int x2, int y2)
     {
-        P1 = new Point(x, y);
-        P2 = new Point(x + width, y + height);
+        P1 = new Point(x1, y1);
+        P2 = new Point(x2, y2);
     }
 }

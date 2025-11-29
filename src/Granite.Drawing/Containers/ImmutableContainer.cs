@@ -10,8 +10,7 @@ public class ImmutableContainer : IContainer
     private readonly List<IDrawable> _children;
     
     private readonly Dictionary<object, List<Rect>> _childrenBounds;
-    
-    private readonly Rect _innerBounds;
+
     public Rect Bounds { get; }
     
     public ImmutableContainer(IDrawableHandler parent, List<IDrawable> children, Rect bounds)
@@ -19,8 +18,8 @@ public class ImmutableContainer : IContainer
         _parent = parent;   
         _children = children;
         Bounds = bounds;
-        _innerBounds = bounds.Rebase(bounds.P1, Point.Zero);
-        _childrenBounds = _children.ComputeBounds(bounds);
+        var innerBounds = bounds.Rebase(bounds.P1, Point.Zero);
+        _childrenBounds = _children.ComputeBounds(innerBounds);
     }
     
     public void Draw(object sender, IDrawable drawable, Point origin)
@@ -48,7 +47,10 @@ public class ImmutableContainer : IContainer
         
         foreach (var drawable in _children)
         {
-            drawable.Draw(output, drawable.Bounds.GetIntersection(_innerBounds));
+            foreach (var bounds in _childrenBounds[drawable])
+            {
+                drawable.Draw(output, bounds);
+            }
         }
     }
 
